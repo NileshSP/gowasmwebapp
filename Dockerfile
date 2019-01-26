@@ -7,7 +7,7 @@ FROM golang:1.11.5 as builder
 WORKDIR /buildapp
 
 #Copy all contents from the root
-COPY . .
+COPY . ./buildapp/
 
 #Build the go project
 RUN GOOS=js GOARCH=wasm go build -o ./buildapp/lib.wasm ./buildapp/main.go
