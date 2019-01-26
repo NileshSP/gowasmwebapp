@@ -7,10 +7,10 @@ FROM golang:1.11.5 as builder
 WORKDIR /buildapp
 
 #Copy all contents from the root
-COPY . ./buildapp/
+COPY . .
 
 #Build the go project
-RUN GOOS=js GOARCH=wasm go build -o ./buildapp/lib.wasm ./buildapp/main.go
+RUN GOOS=js GOARCH=wasm go build -o ./app/lib.wasm ./app/main.go
 
 #Start the server
 #RUN go run ./buildapp/server.go
