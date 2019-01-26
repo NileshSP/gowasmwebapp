@@ -6,6 +6,7 @@ FROM golang:1.11.5 as builder
 # Set the working directory to the buildapp directory
 WORKDIR /buildapp
 
+RUN go get -d -v golang.org/x/net/html
 #Copy all contents from the root
 COPY . .
 
@@ -28,4 +29,5 @@ COPY --from=builder /buildapp/app /app
 
 # Set the entry point of the container to the application executable
 #ENTRYPOINT /app
-CMD ["go", "run", "/app/server.go"]
+#CMD ["go", "run", "/app/server.go"]
+CMD ["./app/index.html"]
