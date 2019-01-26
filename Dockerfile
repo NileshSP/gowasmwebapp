@@ -28,4 +28,4 @@ EXPOSE 8080
 
 # Set the entry point of the container to the application executable
 ENTRYPOINT /app
-CMD ["go", "run", "/app/server.go"]
+#CMD ["go", "run", "/app/server.go"]
