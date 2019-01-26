@@ -30,4 +30,4 @@ COPY --from=builder /buildapp/app /app
 # Set the entry point of the container to the application executable
 #ENTRYPOINT /app
 #CMD ["go", "run", "/app/server.go"]
-CMD ["/app/index.html"]
+CMD ["/app"]
