@@ -11,6 +11,6 @@ COPY . .
 #Build the go project
 RUN GOOS=js GOARCH=wasm go build -o ./app/lib.wasm ./app/main.go
 
-COPY ./app .
+COPY ./app/ .
 
-CMD ["go", "run", "./server.go"]
+CMD ["go", "run", "server.go"]
