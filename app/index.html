@@ -1,20 +1,39 @@
 <!doctype html>
-<!--
-Copyright 2018 The Go Authors. All rights reserved.
-Use of this source code is governed by a BSD-style
-license that can be found in the LICENSE file.
--->
 <html>
-
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<title>Go wasm</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/app.css" rel="stylesheet" />
 </head>
-
 <body>
-
+<div id="dvMainContainer" class="container h-100" >
+	<div id="dvPlaceholder" class="row h-100 justify-content-center align-items-center">
+		<img src="images/ripple.gif" />
+	</div>
+	<div id="dvApp" style="visibility: hidden" class="column h-100 justify-content-center align-items-center">
+		<div class="form-group mb-2 pt-5 pb-2">
+			<h2>Sample App</h2>			
+		</div>
+		<div class="form-group mb-2">
+			<label for="value1" class="px-2">First value</label>
+			<input type="text" id="value1" class="form-control form-control-sm"/>			
+		</div>
+		<div class="form-group mb-2">
+			<label for="value2" class="px-2">Second value</label>
+			<input type="text" id="value2" class="form-control form-control-sm"/>			
+		</div>
+		<div class="form-group mb-2">
+			<input id="addButton" class="btn btn-outline-primary btn-sm" type="button" value="Add" onClick="add('value1', 'value2', 'result');" />
+			<input id="subtractButton" class="btn btn-outline-primary btn-sm" type="button" value="Subtract" onClick="subtract('value1', 'value2', 'result');" />
+		</div>
+		<div class="form-group mb-2">
+				<label for="result" class="px-2">Result</label>
+				<input type="text" id="result" class="form-control form-control-sm"/>			
+		</div>
+	</div>
 	<script src="wasm_exec.js" ></script>
-
 	<script>
 		if (!WebAssembly.instantiateStreaming) { // polyfill
 			WebAssembly.instantiateStreaming = async (resp, importObject) => {
@@ -30,7 +49,8 @@ license that can be found in the LICENSE file.
 		WebAssembly.instantiateStreaming(fetch("lib.wasm"), go.importObject).then(async (result) => {
 			mod = result.module;
 			inst = result.instance;
-			//document.getElementById("runButton").disabled = false;
+			document.getElementById("dvMainContainer").removeChild(document.getElementById("dvPlaceholder"));
+			document.getElementById("dvApp").style.visibility = "visible";
 			await go.run(inst);
 		});
 
@@ -39,13 +59,6 @@ license that can be found in the LICENSE file.
 		// }
 
 	</script>
-
-    <input type="text" id="value1"/>
-	<input type="text" id="value2"/>
-
-	<button onClick="add('value1', 'value2', 'result');" id="addButton">Add</button>
-	<button onClick="subtract('value1', 'value2', 'result');" id="subtractButton">Subtract</button>
-
-    <input type="text" id="result">
+</div>
 </body>
 </html>
