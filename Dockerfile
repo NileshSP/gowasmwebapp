@@ -23,8 +23,11 @@ WORKDIR /buildapp
 # Copy all contents from the root
 COPY ./app/ .
 
-# Build the go project
+# Build the go project in linux server environment
 RUN GOOS=js GOARCH=wasm go build -o lib.wasm main.go
+
+# Build the go project in windows server environment
+#RUN $Env:GOOS="js"; $Env:GOARCH="wasm"; go build -o lib.wasm main.go
 
 # Start the server to listen for requests
 CMD ["go", "run", "server.go"]
