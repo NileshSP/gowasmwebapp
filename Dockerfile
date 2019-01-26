@@ -25,7 +25,7 @@ WORKDIR /app
 COPY --from=builder /buildapp/app /app
 
 # Expose the application on port 8080.
-#EXPOSE 8080
+EXPOSE 8080
 
 # Set the entry point of the container to the application executable
 #ENTRYPOINT /app
