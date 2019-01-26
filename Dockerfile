@@ -14,7 +14,7 @@ COPY . .
 RUN GOOS=js GOARCH=wasm go build -o ./app/lib.wasm ./app/main.go
 
 #Start the server
-RUN go run ./app/server.go
+#RUN go run ./app/server.go
 
 # FROM alpine
 # #Alpine is one of the lightest linux containers out there, only a few 4.15MB
@@ -29,5 +29,5 @@ RUN go run ./app/server.go
 
 # Set the entry point of the container to the application executable
 #ENTRYPOINT /app
-#CMD ["go", "run", "/app/server.go"]
-CMD ["./app"]
+CMD ["go", "run", "/app/server.go"]
+#CMD ["./app"]
