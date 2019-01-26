@@ -6,11 +6,9 @@ WORKDIR /buildapp
 #RUN go get -d -v golang.org/x/net/html
 
 #Copy all contents from the root
-COPY . .
+COPY ./app/ .
 
 #Build the go project
-RUN GOOS=js GOARCH=wasm go build -o ./app/lib.wasm ./app/main.go
-
-COPY ./app/ .
+RUN GOOS=js GOARCH=wasm go build -o lib.wasm main.go
 
 CMD ["go", "run", "server.go"]
