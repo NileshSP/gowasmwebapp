@@ -1,4 +1,4 @@
-# gowasmfacerecognition
+# Go & Wasm
 Web app built using go and wasm
 
 For building go in terminal one:
