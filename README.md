@@ -1,5 +1,5 @@
 # gowasmfacerecognition
-Facial recognition web app built using go and wasm
+Web app built using go and wasm
 
 For building go in terminal one:
  `$Env:GOOS="js"; $Env:GOARCH="wasm"; go build -o ./app/lib.wasm ./app/main.go`
