@@ -35,6 +35,6 @@ func main() {
 
 	println("WASM Go Initialized")
 	// register functions
-	registerCallbacks()
+	go registerCallbacks()
 	<-c
 }
